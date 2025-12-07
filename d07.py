@@ -27,14 +27,11 @@ def solve(puzzle):
                 timelines2[x] += timelines[x] 
             else:
                 splitted = False
-                if (x+1,y) in pods: 
-                    beams2.add(x+1)
-                    timelines2[x+1] += timelines[x]
-                    splitted = True
-                if (x-1,y) in pods: 
-                    beams2.add(x-1)
-                    timelines2[x-1] += timelines[x]
-                    splitted = True
+                for dx in [-1,1]:
+                    if (x+dx,y) in pods: 
+                        beams2.add(x+dx)
+                        timelines2[x+dx] += timelines[x]
+                        splitted = True
                 p1 += splitted
         beams = beams2
         timelines = timelines2 
